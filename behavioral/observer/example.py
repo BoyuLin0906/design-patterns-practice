@@ -8,7 +8,7 @@ def print_section(title):
 class EventListener(ABC):
     @abstractmethod
     def update(self, event_type, data):
-        pass
+        raise NotImplementedError('Subclasses must implement update().')
 
 
 class SlackListener(EventListener):
@@ -30,10 +30,10 @@ class EventManager:
     def __init__(self):
         self.listeners = {}
 
-    def subscribe(self, event_type, listener):
+    def subscribe(self, event_type, listener: EventListener):
         self.listeners.setdefault(event_type, []).append(listener)
 
-    def unsubscribe(self, event_type, listener):
+    def unsubscribe(self, event_type, listener: EventListener):
         if event_type in self.listeners:
             self.listeners[event_type].remove(listener)
 

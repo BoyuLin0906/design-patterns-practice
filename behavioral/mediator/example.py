@@ -17,17 +17,17 @@ class ChatComponent(ABC):
         self.mediator.notify(self, message)
 
     @abstractmethod
-    def receive(self, sender, message):
+    def receive(self, sender: ChatComponent, message):
         raise NotImplementedError('Subclasses must implement receive().')
 
 
 class UserComponent(ChatComponent):
-    def receive(self, sender, message):
+    def receive(self, sender: ChatComponent, message):
         print(f'{self.name} receives from {sender.name}: {message}')
 
 
 class BotComponent(ChatComponent):
-    def receive(self, sender, message):
+    def receive(self, sender: ChatComponent, message):
         print(f'{self.name} notices {sender.name} said: {message}')
 
         if isinstance(sender, BotComponent):
@@ -45,11 +45,11 @@ class ChatRoomMediator:
     def __init__(self):
         self.components = []
 
-    def register(self, component):
+    def register(self, component: ChatComponent):
         self.components.append(component)
         print(f'ChatRoomMediator: registered {component.name}.')
 
-    def notify(self, sender, message):
+    def notify(self, sender: ChatComponent, message):
         print(f'ChatRoomMediator: delivering message from {sender.name}.')
         for component in self.components:
             if component is not sender:

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 
 
@@ -8,7 +10,7 @@ def print_section(title):
 class RouteStrategy(ABC):
     @abstractmethod
     def build_route(self, start, destination):
-        pass
+        raise NotImplementedError('Subclasses must implement build_route().')
 
 
 class WalkingStrategy(RouteStrategy):
@@ -51,10 +53,10 @@ class PublicTransportStrategy(RouteStrategy):
 
 
 class Navigator:
-    def __init__(self, strategy):
-        self.strategy = strategy
+    def __init__(self, strategy: RouteStrategy):
+        self.strategy: RouteStrategy = strategy
 
-    def set_strategy(self, strategy):
+    def set_strategy(self, strategy: RouteStrategy):
         self.strategy = strategy
 
     def build_route(self, start, destination):

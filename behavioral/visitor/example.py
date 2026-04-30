@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from math import pi
 
@@ -8,15 +10,15 @@ def print_section(title):
 
 class Shape(ABC):
     @abstractmethod
-    def accept(self, visitor):
-        pass
+    def accept(self, visitor: ShapeVisitor):
+        raise NotImplementedError('Subclasses must implement accept().')
 
 
 class Circle(Shape):
     def __init__(self, radius):
         self.radius = radius
 
-    def accept(self, visitor):
+    def accept(self, visitor: ShapeVisitor):
         return visitor.visit_circle(self)
 
 
@@ -25,7 +27,7 @@ class Rectangle(Shape):
         self.width = width
         self.height = height
 
-    def accept(self, visitor):
+    def accept(self, visitor: ShapeVisitor):
         return visitor.visit_rectangle(self)
 
 
@@ -36,22 +38,22 @@ class Triangle(Shape):
         self.c = c
         self.height = height
 
-    def accept(self, visitor):
+    def accept(self, visitor: ShapeVisitor):
         return visitor.visit_triangle(self)
 
 
 class ShapeVisitor(ABC):
     @abstractmethod
-    def visit_circle(self, circle):
-        pass
+    def visit_circle(self, circle: Circle):
+        raise NotImplementedError('Subclasses must implement visit_circle().')
 
     @abstractmethod
-    def visit_rectangle(self, rectangle):
-        pass
+    def visit_rectangle(self, rectangle: Rectangle):
+        raise NotImplementedError('Subclasses must implement visit_rectangle().')
 
     @abstractmethod
-    def visit_triangle(self, triangle):
-        pass
+    def visit_triangle(self, triangle: Triangle):
+        raise NotImplementedError('Subclasses must implement visit_triangle().')
 
 
 class AreaVisitor(ShapeVisitor):
@@ -87,7 +89,12 @@ class DrawVisitor(ShapeVisitor):
         return f'Draw a triangle with sides {triangle.a}, {triangle.b}, and {triangle.c}.'
 
 
-def print_shape_details(shape, area_visitor, perimeter_visitor, draw_visitor):
+def print_shape_details(
+    shape: Shape,
+    area_visitor: AreaVisitor,
+    perimeter_visitor: PerimeterVisitor,
+    draw_visitor: DrawVisitor,
+):
     print(shape.accept(draw_visitor))
     print(f'Area: {shape.accept(area_visitor):.2f}')
     print(f'Perimeter: {shape.accept(perimeter_visitor):.2f}')

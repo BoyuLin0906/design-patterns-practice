@@ -46,3 +46,8 @@ Recommended flow:
 - Do not combine multiple patterns in one example unless explicitly requested.
 - Prefer clarity over optimization.
 - Prefer a small teaching example over a realistic but noisy design.
+
+## Git
+
+- Use Conventional Commits for commit messages.
+- Prefer a simple format such as `feat: add decorator pattern example` or `docs: update pattern readme`.

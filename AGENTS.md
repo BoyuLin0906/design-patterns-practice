@@ -51,3 +51,4 @@ Recommended flow:
 
 - Use Conventional Commits for commit messages.
 - Prefer a simple format such as `feat: add decorator pattern example` or `docs: update pattern readme`.
+- Do not run `git commit` unless the user explicitly asks for it. Prefer reviewing changes and suggesting a commit message for the user to run.

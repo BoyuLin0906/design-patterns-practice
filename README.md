@@ -2,7 +2,8 @@
 
 This repository is for practicing common software design patterns.
 
-The practice structure follows the pattern categories described by Refactoring.Guru:
+The practice structure follows the pattern categories described by Refactoring.Guru.
+This repository currently tracks the 22 patterns listed in that catalog.
 
 - Creational patterns
 - Structural patterns
@@ -21,6 +22,11 @@ Use this repository to:
 - build familiarity with design tradeoffs
 
 ## Repository Structure
+
+Each pattern folder is intended to stay small and focused, and usually contains:
+
+- `example.py` for the runnable example
+- `README.md` for a short practical explanation
 
 ```text
 .
@@ -76,4 +82,4 @@ python3 example.py
 
 ## Environment Setup
 
-For `uv` installation and virtual environment notes, see [UV_SETUP.md](/mnt/c/users/h5611/desktop/projects/design-patterns-practice/UV_SETUP.md).
+For `uv` installation and virtual environment notes, see [UV_SETUP.md](./UV_SETUP.md).

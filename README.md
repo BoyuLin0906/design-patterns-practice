@@ -2,8 +2,9 @@
 
 This repository is for practicing common software design patterns.
 
-The practice structure follows the pattern categories described by Refactoring.Guru.
-This repository currently tracks the 22 patterns listed in that catalog.
+The practice structure follows the main pattern categories described by Refactoring.Guru,
+with a few additional patterns referenced from SourceMaking.
+This repository currently tracks 26 patterns in total.
 
 - Creational patterns
 - Structural patterns
@@ -12,6 +13,7 @@ This repository currently tracks the 22 patterns listed in that catalog.
 Reference:
 
 - https://refactoring.guru/design-patterns
+- https://sourcemaking.com/design_patterns
 
 ## Goal
 
@@ -54,6 +56,7 @@ python3 example.py
 - Factory Method
 - Abstract Factory
 - Builder
+- Object Pool
 - Prototype
 - Singleton
 
@@ -65,15 +68,18 @@ python3 example.py
 - Decorator
 - Facade
 - Flyweight
+- Private Class Data
 - Proxy
 
 ### Behavioral
 
 - Chain of Responsibility
 - Command
+- Interpreter
 - Iterator
 - Mediator
 - Memento
+- Null Object
 - Observer
 - State
 - Strategy
